@@ -1,5 +1,5 @@
 # Shippable defaults to a Ruby image if no language is specified.
-# We are just building a Multi Stage Docker image in this respository, so it is fine to specify language:none.
+# We are only building a Multi Stage Docker image in this respository, so it is fine to specify language:none.
 language: none
 
 build:
@@ -7,4 +7,7 @@ build:
     # clone the git repository that has app.go which we use in our Dockerfile
     - git clone https://github.com/alexellis/href-counter.git
     # Dockerfile is present in the root of the repository.
+    # We use Shippable platform environment variables $BRANCH and $BUILD_NUMBER
+    # for tagging the docker image.
     - docker build -t devopsrecipes/multi-stage-docker:$BRANCH.$BUILD_NUMBER .
+    # After the image is built, it can be pushed to any supported Docker registry.
