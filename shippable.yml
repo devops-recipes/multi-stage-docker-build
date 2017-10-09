@@ -1,0 +1,10 @@
+# Shippable defaults to a Ruby image if no language is specified.
+# We are just building a Multi Stage Docker image in this respository, so it is fine to specify language:none.
+language: none
+
+build:
+  ci:
+    # Dockerfile is present in the root of the repository.
+    docker build -t devopsrecipes/multi-stage-docker:$BRANCH.$BUILD_NUMBER .
+    
+    
