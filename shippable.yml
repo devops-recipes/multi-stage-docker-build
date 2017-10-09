@@ -5,6 +5,6 @@ language: none
 build:
   ci:
     # clone the git repository that has app.go which we use in our Dockerfile
-    git clone https://github.com/alexellis/href-counter.git
+    - git clone https://github.com/alexellis/href-counter.git
     # Dockerfile is present in the root of the repository.
-    docker build -t devopsrecipes/multi-stage-docker:$BRANCH.$BUILD_NUMBER .
+    - docker build -t devopsrecipes/multi-stage-docker:$BRANCH.$BUILD_NUMBER .
