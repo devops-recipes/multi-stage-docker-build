@@ -4,10 +4,11 @@ language: none
 
 build:
   ci:
-    # clone the git repository that has app.go which we use in our Dockerfile
-    - git clone https://github.com/alexellis/href-counter.git
     # Dockerfile is present in the root of the repository.
     # We use Shippable platform environment variables $BRANCH and $BUILD_NUMBER
     # for tagging the docker image.
     - docker build -t devopsrecipes/multi-stage-docker:$BRANCH.$BUILD_NUMBER .
-    # After the image is built, it can be pushed to any supported Docker registry.
+    # After the image is built, we run the image to test if it prints Hello World.
+    - docker run devopsrecipes/multi-stage-docker:$BRANCH.$BUILD_NUMBER
+    # The image can now be pushed to any supported Docker registry.
+    
